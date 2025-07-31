@@ -13,13 +13,44 @@ int main()
     int max = 100;
     int answer = (rand() % (max - min + 1)) + min;
     int max_tries = 7;
+    int difficulty;
 
     printf("*** NUMBER GUESSING GAME ***\n\n");
-    printf("You have 7 tries to find it. Good Luck!\n\n");
+    printf("Select difficulty:\n\n");
+    printf("1 - Easy (7 tries, numbers 1-100)\n");
+    printf("2 - Medium (5 tries, numbers 1-100)\n");
+    printf("3 - Hard (3 tries, numbers 1-100)\n");
+    printf("Enter your choice: ");
+    scanf("%d", &difficulty);
+
+    switch (difficulty)
+    {
+    case 1:
+        max = 100;
+        max_tries = 7;
+        break;
+    case 2:
+        max = 100;
+        max_tries = 5;
+        break;
+    case 3:
+        max = 100;
+        max_tries = 3;
+        break;     
+    default:
+        printf("Invalid choice. Starting with default difficulty (Medium).\n");
+        max = 100;
+        max_tries = 5;
+        break;
+    }
+
+    answer = (rand() % (max -min + 1)) + min;
+
+    printf("\nYou have %d tries to guess a number between %d and %d\n\n", max_tries, min, max);
 
     do
     {
-        printf("Guess a number between %d - %d: ", min, max);
+        printf("Enter your guess: ");
         scanf("%d", &guess);
         tries++;
 
